@@ -1,4 +1,4 @@
-package com.zzdz.consumer1.mqlistener;
+package com.zzdz.consumer2.mqlistener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Service;
  * @Created by joe
  */
 @Slf4j
-//@Service
-@RocketMQMessageListener(topic = "test-topic-1", consumerGroup = "my-consumer_test-topic-1", consumeMode = ConsumeMode.CONCURRENTLY)
-public class MyConsumer1 implements RocketMQListener<String> {
+@Service
+@RocketMQMessageListener(topic = "test-topic-3", consumerGroup = "my-consumer_test-topic-33", consumeMode = ConsumeMode.ORDERLY)
+public class MyConsumer3 implements RocketMQListener<String> {
     @Override
     public void onMessage(String message) {
-        log.info("received message: {}..", message);
+        log.info("received message: {}...", message);
     }
 }

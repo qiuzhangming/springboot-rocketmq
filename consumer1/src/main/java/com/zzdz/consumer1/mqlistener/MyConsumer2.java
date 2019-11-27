@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
  * @Created by joe
  */
 @Slf4j
-@Service
+//@Service
 @RocketMQMessageListener(topic = "test-topic-2", consumerGroup = "my-consumer_test-topic-2", messageModel = MessageModel.BROADCASTING)
 public class MyConsumer2 implements RocketMQListener<OrderPaidEvent> {
 
     @Override
     public void onMessage(OrderPaidEvent orderPaidEvent) {
-        log.error("received orderPaidEvent: {}", orderPaidEvent);
+        log.info("received orderPaidEvent: {}", orderPaidEvent);
     }
 }
