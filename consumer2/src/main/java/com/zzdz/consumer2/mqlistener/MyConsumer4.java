@@ -1,6 +1,7 @@
 package com.zzdz.consumer2.mqlistener;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.spring.annotation.ConsumeMode;
 import org.apache.rocketmq.spring.annotation.RocketMQMessageListener;
 import org.apache.rocketmq.spring.core.RocketMQListener;
@@ -14,11 +15,12 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@RocketMQMessageListener(topic = "test-topic-1", consumerGroup = "my-consumer_2", consumeMode = ConsumeMode.CONCURRENTLY)
-public class MyConsumer1 implements RocketMQListener<String> {
+@RocketMQMessageListener(topic = "test-topic-4", consumerGroup = "my-consumer_2_2", selectorExpression = "hehe")
+public class MyConsumer4 implements RocketMQListener<MessageExt> {
+
     @Override
-    public void onMessage(String message) {
-//        log.info("received message: {}...", message);
-        throw new RuntimeException("模拟消费失败");
+    public void onMessage(MessageExt message) {
+        log.info("tags:{}", message.getTags());
+        log.info("received test-topic-4 message: {}", message.toString());
     }
 }

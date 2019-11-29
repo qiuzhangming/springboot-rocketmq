@@ -14,10 +14,10 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@RocketMQMessageListener(topic = "test-topic-3", consumerGroup = "my-consumer_test-topic-3", consumeMode = ConsumeMode.ORDERLY)
+@RocketMQMessageListener(topic = "test-topic-3", consumerGroup = "my-consumer_11", consumeMode = ConsumeMode.ORDERLY)
 public class MyConsumer3 implements RocketMQListener<String> {
     @Override
     public void onMessage(String message) {
-        log.info("received message: {}..", message);
+        log.error("received message: {}", message);
     }
 }
